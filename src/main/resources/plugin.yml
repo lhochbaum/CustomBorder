@@ -6,3 +6,12 @@ author: "lhochbaum"
 website: "https://github.com/lhochbaum"
 
 main: "${project.groupId}.${project.artifactId}.${project.name}"
+
+commands:
+  wand:
+    description: "Erlaubt es Dir, die Wand deines Plots zu verändern."
+    usage: "/wand"
+    permission: "customborders.command"
+    aliases:
+      - "wall"
+      - "pborder"
