@@ -5,6 +5,8 @@ description: "${project.description}\nBuilt at ${git.build.time}"
 author: "lhochbaum"
 website: "https://github.com/lhochbaum"
 
+depend:
+- PlotSquared
 main: "${project.groupId}.${project.artifactId}.${project.name}"
 
 commands:

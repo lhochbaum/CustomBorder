@@ -42,7 +42,12 @@ public final class BorderMenu implements Listener {
         // partition the filtered materials so we can safely set them into the inventories.
         final List<List<Material>> partitions = Lists.partition(
             Arrays.stream(Material.values())
+            // only use blocks.
             .filter(Material::isBlock)
+            // air is considered a block for some retarded reason.
+            .filter(m -> m != Material.AIR)
+            // exclude liquids.
+            .filter(Material::isSolid)
             .collect(Collectors.toList()), 27);
 
         // use the amount of partitions to set the array size.
@@ -51,7 +56,7 @@ public final class BorderMenu implements Listener {
         // populate the inventories.
         for (int i = 0; i < menus.length; i++) {
             // create the inventories and use the loop counter as page index.
-            menus[i] = Bukkit.createInventory(null, 45, "Blöcke, Seite " + i + 1);
+            menus[i] = Bukkit.createInventory(null, 45, "Blöcke, Seite " + (i + 1));
             // access the newly allocated menu.
             final Inventory inventory = menus[i];
 
@@ -63,7 +68,7 @@ public final class BorderMenu implements Listener {
 
             // first page should not have a button for non-existing previous page.
             if (i != 0) {
-                inventory.setItem(33, BUTTON_BACK);
+                inventory.setItem(36, BUTTON_BACK);
             }
 
             // last page should not have a button for non-existing next page.
@@ -79,8 +84,8 @@ public final class BorderMenu implements Listener {
 
     private int indexOf(Inventory inventory) {
         for (int i = 0; i < menus.length; i++) {
-            // addresses are equal so we can return the index.
-            if (menus[i] == inventory) {
+            // titles are equal so we can return the index.
+            if (menus[i].getTitle().equals(inventory.getTitle())) {
                 return i;
             }
         }
@@ -94,19 +99,21 @@ public final class BorderMenu implements Listener {
         final Inventory clicked = event.getClickedInventory();
 
         // make sure the inventory belongs to our plugin.
-        if (clicked.getTitle().startsWith("Blöcke, Seite")) {
+        if (clicked.getTitle() != null && clicked.getTitle().startsWith("Blöcke, Seite")) {
             // cancel the click if so.
             event.setCancelled(true);
 
             final ItemStack item = event.getCurrentItem();
 
             // stop if no item was clicked.
-            if (item != null) {
+            if (item != null && item.getType() != Material.AIR) {
                 final Material type = item.getType();
                 final Player player = (Player) event.getWhoClicked();
 
                 // a button was pressed.
                 if (type == Material.SKULL_ITEM) {
+                    Bukkit.broadcastMessage("skull clicked");
+
                     final String owner = ((SkullMeta) item.getItemMeta()).getOwner();
                     final int index = indexOf(clicked);
 
@@ -115,6 +122,8 @@ public final class BorderMenu implements Listener {
                     } else if (owner.equals("MHF_ArrowLeft")) {
                         show(player, index - 1);
                     }
+
+                    return;
                 }
 
                 // finally change the border and notify the player.

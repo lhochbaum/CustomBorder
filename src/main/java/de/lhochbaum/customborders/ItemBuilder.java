@@ -7,25 +7,29 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public final class ItemBuilder {
     private final ItemStack itemStack;
-    private final ItemMeta itemMeta;
 
     public ItemBuilder(final Material material) {
         this.itemStack = new ItemStack(material);
-        this.itemMeta = itemStack.getItemMeta();
     }
 
     public ItemBuilder name(final String name) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
         itemMeta.setDisplayName(name);
+        itemStack.setItemMeta(itemMeta);
         return this;
     }
 
     public ItemBuilder skullOwner(final String name) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
         ((SkullMeta) itemMeta).setOwner(name);
+        itemStack.setItemMeta(itemMeta);
+        itemStack.setDurability((short) 3);
         return this;
     }
 
     public ItemStack build() {
-        itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
 }
