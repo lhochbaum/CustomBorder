@@ -112,8 +112,6 @@ public final class BorderMenu implements Listener {
 
                 // a button was pressed.
                 if (type == Material.SKULL_ITEM) {
-                    Bukkit.broadcastMessage("skull clicked");
-
                     final String owner = ((SkullMeta) item.getItemMeta()).getOwner();
                     final int index = indexOf(clicked);
 

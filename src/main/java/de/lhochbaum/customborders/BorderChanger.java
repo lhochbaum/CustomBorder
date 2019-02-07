@@ -27,5 +27,6 @@ public final class BorderChanger {
     public void change(final Plot plot, final String materialName) {
         plot.setComponent("wall", materialName);
         plot.setComponent("border", materialName);
+        plot.setFlag(CustomBorders.FLAG, materialName);
     }
 }
