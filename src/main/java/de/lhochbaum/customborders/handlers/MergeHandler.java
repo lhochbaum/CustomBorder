@@ -38,7 +38,5 @@ public class MergeHandler implements Listener {
                 Bukkit.getScheduler().runTaskLater(plugin, () ->
                     p.getConnectedPlots().forEach(c -> changer.change(c, material)), 20L);
             });
-
-        Bukkit.broadcastMessage("plot got merged");
     }
 }
