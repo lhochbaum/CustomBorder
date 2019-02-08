@@ -42,12 +42,13 @@ public final class BorderMenu implements Listener {
         // partition the filtered materials so we can safely set them into the inventories.
         final List<List<Material>> partitions = Lists.partition(
             Arrays.stream(Material.values())
-            // only use blocks.
-            .filter(Material::isBlock)
-            // air is considered a block for some retarded reason.
-            .filter(m -> m != Material.AIR)
-            // exclude liquids.
-            .filter(Material::isSolid)
+            // only include blocks that block light.
+            .filter(Material::isOccluding)
+            // exclude double steps.
+            .filter(m -> !m.name().endsWith("DOUBLE_STEP"))
+            // exclude shining blocks as they're invisible in inventories.
+            .filter(m -> m != Material.REDSTONE_LAMP_ON)
+            .filter(m -> m != Material.GLOWING_REDSTONE_ORE)
             .collect(Collectors.toList()), 27);
 
         // use the amount of partitions to set the array size.
@@ -60,11 +61,11 @@ public final class BorderMenu implements Listener {
             // access the newly allocated menu.
             final Inventory inventory = menus[i];
 
-            // populate.
-            partitions.get(i).forEach(material ->
-                inventory.addItem(new ItemBuilder(material)
-                .name("§a" + material.name())
-                .build()));
+            // populate the inventory.
+            partitions.get(i).forEach(m -> {
+                ItemStack item = new ItemBuilder(m).name("§a" + m.name()).build();
+                inventory.addItem(item);
+            });
 
             // first page should not have a button for non-existing previous page.
             if (i != 0) {
