@@ -12,13 +12,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 public class MergeHandler implements Listener {
-    private final PlotAPI api;
     private final BorderChanger changer;
     private final CustomBorders plugin;
 
     @Inject
-    public MergeHandler(final PlotAPI api, final BorderChanger changer, final CustomBorders plugin) {
-        this.api = api;
+    public MergeHandler(final BorderChanger changer, final CustomBorders plugin) {
         this.changer = changer;
         this.plugin = plugin;
     }

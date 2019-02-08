@@ -79,11 +79,11 @@ public final class BorderMenu implements Listener {
         }
     }
 
-    public void show(Player player, int index) {
+    public void show(final Player player, final int index) {
         player.openInventory(menus[index]);
     }
 
-    private int indexOf(Inventory inventory) {
+    private int indexOf(final Inventory inventory) {
         for (int i = 0; i < menus.length; i++) {
             // titles are equal so we can return the index.
             if (menus[i].getTitle().equals(inventory.getTitle())) {

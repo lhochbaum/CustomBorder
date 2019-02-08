@@ -13,7 +13,7 @@ public final class ItemBuilder {
     }
 
     public ItemBuilder name(final String name) {
-        ItemMeta itemMeta = itemStack.getItemMeta();
+        final ItemMeta itemMeta = itemStack.getItemMeta();
 
         itemMeta.setDisplayName(name);
         itemStack.setItemMeta(itemMeta);
@@ -21,7 +21,7 @@ public final class ItemBuilder {
     }
 
     public ItemBuilder skullOwner(final String name) {
-        ItemMeta itemMeta = itemStack.getItemMeta();
+        final ItemMeta itemMeta = itemStack.getItemMeta();
 
         ((SkullMeta) itemMeta).setOwner(name);
         itemStack.setItemMeta(itemMeta);

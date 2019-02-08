@@ -24,8 +24,8 @@ public final class BorderCommand implements CommandExecutor {
             return true;
         }
 
-        Player player = (Player) sender;
-        PlotPlayer plotPlayer = api.wrapPlayer(player);
+        final Player player = (Player) sender;
+        final PlotPlayer plotPlayer = api.wrapPlayer(player);
 
         if (plotPlayer.getPlots().size() == 0) {
             player.sendMessage("§cDu besitzt keine Plots.");
