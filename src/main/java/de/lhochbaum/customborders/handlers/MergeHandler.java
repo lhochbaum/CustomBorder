@@ -1,7 +1,6 @@
 package de.lhochbaum.customborders.handlers;
 
 import com.google.inject.Inject;
-import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.Plot;
 import com.plotsquared.bukkit.events.PlotMergeEvent;
 import de.lhochbaum.customborders.BorderChanger;
@@ -30,10 +29,10 @@ public class MergeHandler implements Listener {
             .filter(p -> p.hasFlag(CustomBorders.FLAG))
             .findAny()
             .ifPresent(p -> {
-                Material material = Material.matchMaterial(p.getFlag(CustomBorders.FLAG).get());
+                final Material material = Material.matchMaterial(p.getFlag(CustomBorders.FLAG).get());
 
                 Bukkit.getScheduler().runTaskLater(plugin, () ->
-                    p.getConnectedPlots().forEach(c -> changer.change(c, material)), 20L);
+                    p.getConnectedPlots().forEach(c -> changer.change(c, material)), 3 * 20L);
             });
     }
 }
