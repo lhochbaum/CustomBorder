@@ -1,7 +1,6 @@
 package de.lhochbaum.customborders;
 
 import com.google.common.collect.Lists;
-import com.google.inject.Inject;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,10 +12,13 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Singleton
 public final class BorderMenu implements Listener {
     // used to go to the previous page.
     private static final ItemStack BUTTON_BACK =

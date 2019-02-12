@@ -1,6 +1,5 @@
 package de.lhochbaum.customborders.handlers;
 
-import com.google.inject.Inject;
 import com.intellectualcrafters.plot.object.Plot;
 import com.plotsquared.bukkit.events.PlotMergeEvent;
 import de.lhochbaum.customborders.BorderChanger;
@@ -10,7 +9,10 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class MergeHandler implements Listener {
+import javax.inject.Inject;
+
+@HandlerScope
+public final class MergeHandler implements Listener {
     private final BorderChanger changer;
     private final CustomBorders plugin;
 

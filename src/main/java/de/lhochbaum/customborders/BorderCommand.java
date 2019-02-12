@@ -1,6 +1,5 @@
 package de.lhochbaum.customborders;
 
-import com.google.inject.Inject;
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.PlotPlayer;
 import org.bukkit.command.Command;
@@ -8,6 +7,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public final class BorderCommand implements CommandExecutor {
     private final BorderMenu menu;
     private final PlotAPI api;

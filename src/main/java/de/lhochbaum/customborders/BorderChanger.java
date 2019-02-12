@@ -1,12 +1,15 @@
 package de.lhochbaum.customborders;
 
-import com.google.inject.Inject;
 import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.object.Plot;
 import com.intellectualcrafters.plot.object.PlotPlayer;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public final class BorderChanger {
     private final PlotAPI api;
 
