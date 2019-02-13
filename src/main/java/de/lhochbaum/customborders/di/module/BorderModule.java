@@ -1,4 +1,4 @@
-package de.lhochbaum.customborders;
+package de.lhochbaum.customborders.di.module;
 
 import com.intellectualcrafters.plot.api.PlotAPI;
 import dagger.Module;

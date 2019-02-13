@@ -1,4 +1,4 @@
-package de.lhochbaum.customborders.handlers;
+package de.lhochbaum.customborders.di.scope;
 
 import javax.inject.Scope;
 import java.lang.annotation.Retention;

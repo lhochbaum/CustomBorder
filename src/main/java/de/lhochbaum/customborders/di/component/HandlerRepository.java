@@ -1,6 +1,8 @@
-package de.lhochbaum.customborders.handlers;
+package de.lhochbaum.customborders.di.component;
 
 import dagger.Subcomponent;
+import de.lhochbaum.customborders.di.scope.HandlerScope;
+import de.lhochbaum.customborders.handlers.MergeHandler;
 
 @HandlerScope
 @Subcomponent

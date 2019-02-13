@@ -1,9 +1,13 @@
-package de.lhochbaum.customborders;
+package de.lhochbaum.customborders.di.component;
 
 import com.intellectualcrafters.plot.api.PlotAPI;
 import dagger.BindsInstance;
 import dagger.Component;
-import de.lhochbaum.customborders.handlers.HandlerRepository;
+import de.lhochbaum.customborders.BorderChanger;
+import de.lhochbaum.customborders.BorderCommand;
+import de.lhochbaum.customborders.BorderMenu;
+import de.lhochbaum.customborders.CustomBorders;
+import de.lhochbaum.customborders.di.module.BorderModule;
 
 import javax.inject.Singleton;
 
@@ -11,7 +15,7 @@ import javax.inject.Singleton;
 @Component(modules = BorderModule.class)
 public interface BorderComponent {
     /**
-     * Returns the handler repository binding which
+     * Returns the {@link HandlerRepository} binding which
      * contains our handlers.
      *
      * @return Handler repository.
@@ -19,28 +23,28 @@ public interface BorderComponent {
     HandlerRepository.Builder handlerBuilder();
 
     /**
-     * Returns the border changer binding.
+     * Returns the {@link BorderChanger} binding.
      *
      * @return Border changer.
      */
     BorderChanger borderChanger();
 
     /**
-     * Returns the command binding.
+     * Returns the {@link BorderCommand} binding.
      *
      * @return Command.
      */
     BorderCommand borderCommand();
 
     /**
-     * Returns the border menu binding.
+     * Returns the {@link BorderMenu} binding.
      *
      * @return Border menu.
      */
     BorderMenu borderMenu();
 
     /**
-     * Returns the PlotSquared API binding.
+     * Returns the {@link PlotAPI} binding.
      *
      * @return PlotSquared API.
      */

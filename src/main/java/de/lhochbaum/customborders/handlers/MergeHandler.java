@@ -4,6 +4,7 @@ import com.intellectualcrafters.plot.object.Plot;
 import com.plotsquared.bukkit.events.PlotMergeEvent;
 import de.lhochbaum.customborders.BorderChanger;
 import de.lhochbaum.customborders.CustomBorders;
+import de.lhochbaum.customborders.di.scope.HandlerScope;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;

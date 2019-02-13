@@ -4,7 +4,9 @@ import com.intellectualcrafters.plot.api.PlotAPI;
 import com.intellectualcrafters.plot.flag.Flag;
 import com.intellectualcrafters.plot.flag.Flags;
 import com.intellectualcrafters.plot.flag.StringFlag;
-import de.lhochbaum.customborders.handlers.HandlerRepository;
+import de.lhochbaum.customborders.di.component.BorderComponent;
+import de.lhochbaum.customborders.di.component.DaggerBorderComponent;
+import de.lhochbaum.customborders.di.component.HandlerRepository;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
